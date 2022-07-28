@@ -218,14 +218,13 @@ class BSTree {
         }
     }
 
-    levelOrderTraversal(): Array<number> {
-        let rst: Array<number> = []
-        if (this.root == null) return rst;
+    levelOrderTraversal(callback: Function) {
+        if (this.root == null) return;
         let queue = new Queue<TreeNode>()
         queue.enQueue(this.root);
         while (!queue.isEmpty()) {
             let node = queue.deQueue();
-            rst.push(node.val);
+            callback(node.val);
             if (node.left != null) {
                 queue.enQueue(node.left)
             }
@@ -233,7 +232,6 @@ class BSTree {
                 queue.enQueue(node.right)
             }
         }
-        return rst;
     }
 
 }
@@ -247,16 +245,16 @@ let cb = (v: number) => {
     console.log(v)
 }
 //前中后
-bst.preOrder(cb);
-bst.inOrder(cb);
-bst.postOrder(cb);
-//前中后（栈回溯）
-bst.preOrderWithStack(cb);
-bst.inOrderWithStack(cb);
-bst.postOrderWithStack(cb);
+// bst.preOrder(cb);
+// bst.inOrder(cb);
+// bst.postOrder(cb);
+// //前中后（栈回溯）
+// bst.preOrderWithStack(cb);
+// bst.inOrderWithStack(cb);
+// bst.postOrderWithStack(cb);
 //广度优先遍历（层序遍历）（队列FIFO实现）
-console.log(bst.levelOrderTraversal())
+bst.levelOrderTraversal(cb);
 //查找最大、最小、具体值
-console.log('findMin: ', bst.findMin());
-console.log('findMax: ', bst.findMax());
-console.log('bst.has(27): ', bst.search(27));
+// console.log('findMin: ', bst.findMin());
+// console.log('findMax: ', bst.findMax());
+// console.log('bst.has(27): ', bst.search(27));
