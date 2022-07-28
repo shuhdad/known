@@ -1,5 +1,8 @@
 import Stack from "../Stack/ArrayStack";
+import Queue from "../Queue/ArrayQueue";
 import TreeNode from "./TreeNode";
+
+
 class BSTree {
     root: TreeNode | null
     constructor() {
@@ -106,7 +109,7 @@ class BSTree {
                 stack.push(node);
                 node = node.left;
             }
-           let popNode = stack.pop() ?? null;
+            let popNode = stack.pop() ?? null;
             if (popNode?.right == null || popNode.right == prev) {
                 callback(popNode?.val);
                 prev = popNode;
@@ -215,26 +218,45 @@ class BSTree {
         }
     }
 
+    levelOrderTraversal(): Array<number> {
+        let rst: Array<number> = []
+        if (this.root == null) return rst;
+        let queue = new Queue<TreeNode>()
+        queue.enQueue(this.root);
+        while (!queue.isEmpty()) {
+            let node = queue.deQueue();
+            rst.push(node.val);
+            if (node.left != null) {
+                queue.enQueue(node.left)
+            }
+            if (node.right != null) {
+                queue.enQueue(node.right)
+            }
+        }
+        return rst;
+    }
+
 }
-
+//创建一个二叉树实例
 let bst = new BSTree();
-
 var nodes = [8, 3, 10, 1, 6, 14, 4, 7, 13]
-
+//构建二叉树
 nodes.forEach(x => bst.insert(x));
-// console.log(JSON.stringify(bst))
-
-// bst.inOrder((v: number) => {
-//     console.log(v)
-// })
-
-bst.postOrderWithStack((v: number) => {
+//遍历回调：打印元素
+let cb = (v: number) => {
     console.log(v)
-})
-
-// console.log('findMin: ', bst.findMin());
-// console.log('findMax: ', bst.findMax());
-
-// console.log('bst.has(27): ', bst.search(27));
-// console.log('bst.has(6): ', bst.search(6));
-// console.log('bst.has(18): ', bst.search(18));
+}
+//前中后
+bst.preOrder(cb);
+bst.inOrder(cb);
+bst.postOrder(cb);
+//前中后（栈回溯）
+bst.preOrderWithStack(cb);
+bst.inOrderWithStack(cb);
+bst.postOrderWithStack(cb);
+//广度优先遍历（层序遍历）（队列FIFO实现）
+console.log(bst.levelOrderTraversal())
+//查找最大、最小、具体值
+console.log('findMin: ', bst.findMin());
+console.log('findMax: ', bst.findMax());
+console.log('bst.has(27): ', bst.search(27));
