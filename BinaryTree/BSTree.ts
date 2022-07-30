@@ -113,7 +113,6 @@ class BSTree {
             if (popNode?.right == null || popNode.right == prev) {
                 callback(popNode?.val);
                 prev = popNode;
-                node = null;
             } else {
                 stack.push(popNode);
                 node = popNode?.right ?? null;
@@ -245,7 +244,7 @@ let cb = (v: number) => {
     console.log(v)
 }
 //前中后
-// bst.preOrder(cb);
+// bst.postOrderWithStack(cb);
 // bst.inOrder(cb);
 // bst.postOrder(cb);
 // //前中后（栈回溯）
@@ -253,8 +252,10 @@ let cb = (v: number) => {
 // bst.inOrderWithStack(cb);
 // bst.postOrderWithStack(cb);
 //广度优先遍历（层序遍历）（队列FIFO实现）
-bst.levelOrderTraversal(cb);
+// bst.levelOrderTraversal(cb);
 //查找最大、最小、具体值
 // console.log('findMin: ', bst.findMin());
 // console.log('findMax: ', bst.findMax());
 // console.log('bst.has(27): ', bst.search(27));
+
+bst.remove(3)
