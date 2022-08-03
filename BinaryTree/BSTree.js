@@ -1,15 +1,14 @@
-import Stack from "../Stack/ArrayStack";
-import Queue from "../Queue/ArrayQueue";
-import TreeNode from "./TreeNode";
+const Stack = require("../Stack/ArrayStack");
+const Queue = require("../Queue/ArrayQueue");
+const TreeNode = require("./TreeNode");
 
 
 class BSTree {
-    root: TreeNode | null
     constructor() {
         this.root = null;
     }
 
-    insert(val: number) {
+    insert(val) {
         let newNode = new TreeNode(val);
         if (this.root == null) {
             this.root = newNode;
@@ -23,7 +22,7 @@ class BSTree {
      * @param node 插入位置节点
      * @param newNode 待插入节点
      */
-    private insertNode(node: TreeNode, newNode: TreeNode) {
+    insertNode(node, newNode) {
         if (newNode.val < node.val) {
             if (node.left == null) {
                 node.left = newNode
@@ -43,24 +42,24 @@ class BSTree {
      * 中序排序
      * @param callback 输入回调
      */
-    inOrder(callback: Function) {
+    inOrder(callback) {
         if (this.root == null) return;
         this.inOrderNode(this.root, callback)
     }
 
-    private inOrderNode(node: TreeNode | null, callback: Function) {
+    inOrderNode(node, callback) {
         if (node == null) return;
         this.inOrderNode(node.left, callback)
         callback(node.val);
         this.inOrderNode(node.right, callback)
     }
 
-    preOrder(callback: Function) {
+    preOrder(callback) {
         if (this.root == null) return;
         this.preOrderNode(this.root, callback)
     }
 
-    private preOrderNode(node: TreeNode | null, callback: Function) {
+    preOrderNode(node) {
         if (node == null) return;
         callback(node.val);
         this.preOrderNode(node.left, callback)
@@ -68,9 +67,9 @@ class BSTree {
     }
 
 
-    preOrderWithStack(callback: Function) {
+    preOrderWithStack(callback) {
         let node = this.root;
-        let stack = new Stack<TreeNode>();
+        let stack = new Stack();
         while (node != null || !stack.isEmpty()) {
             while (node != null) {
                 callback(node.val);
@@ -84,9 +83,9 @@ class BSTree {
         }
     }
 
-    inOrderWithStack(callback: Function) {
+    inOrderWithStack(callback) {
         let node = this.root;
-        let stack = new Stack<TreeNode>();
+        let stack = new Stack();
         while (node != null || !stack.isEmpty()) {
             while (node != null) {
                 stack.push(node);
@@ -100,10 +99,10 @@ class BSTree {
         }
     }
 
-    postOrderWithStack(callback: Function) {
+    postOrderWithStack(callback) {
         let node = this.root;
-        let stack = new Stack<TreeNode>();
-        let prev: TreeNode | null = null;
+        let stack = new Stack();
+        let prev = null;
         while (node != null || !stack.isEmpty()) {
             while (node != null) {
                 stack.push(node);
@@ -120,12 +119,12 @@ class BSTree {
         }
     }
 
-    postOrder(callback: Function) {
+    postOrder(callback) {
         if (this.root == null) return;
         this.postOrderNode(this.root, callback);
     }
 
-    private postOrderNode(node: TreeNode | null, callback: Function) {
+    postOrderNode(node, callback) {
         if (node == null) return null;
         this.postOrderNode(node.left, callback)
         this.postOrderNode(node.right, callback);
@@ -137,7 +136,7 @@ class BSTree {
         return this.findNodeMin(this.root);
     }
 
-    private findNodeMin(node: TreeNode | null): TreeNode | null {
+    findNodeMin(node) {
         if (node) {
             while (node && node.left) {
                 node = node.left;
@@ -151,7 +150,7 @@ class BSTree {
         return this.findNodeMax(this.root);
     }
 
-    private findNodeMax(node: TreeNode | null): TreeNode | null {
+    findNodeMax(node) {
         if (node) {
             while (node && node.right) {
                 node = node.right;
@@ -161,11 +160,11 @@ class BSTree {
         return null
     }
 
-    search(val: number): TreeNode | null {
+    search(val) {
         return this.searchNode(this.root, val);
     }
 
-    searchNode(node: TreeNode | null, val: number): TreeNode | null {
+    searchNode(node, val) {
         if (node == null) return null;
         if (node.val === val) {
             return node;
@@ -176,11 +175,11 @@ class BSTree {
         }
     }
 
-    remove(val: number): TreeNode | null {
+    remove(val) {
         return this.removeNode(this.root, val);
     }
 
-    removeNode(node: TreeNode | null, val: number): TreeNode | null {
+    removeNode(node, val) {
         if (node == null)
             return null;
         // if (node.val == val)
@@ -217,9 +216,9 @@ class BSTree {
         }
     }
 
-    levelOrderTraversal(callback: Function) {
+    levelOrderTraversal(callback) {
         if (this.root == null) return;
-        let queue = new Queue<TreeNode>()
+        let queue = new Queue()
         queue.enQueue(this.root);
         while (!queue.isEmpty()) {
             let node = queue.deQueue();
@@ -240,7 +239,7 @@ var nodes = [8, 3, 10, 1, 6, 14, 4, 7, 13]
 //构建二叉树
 nodes.forEach(x => bst.insert(x));
 //遍历回调：打印元素
-let cb = (v: number) => {
+let cb = (v) => {
     console.log(v)
 }
 //前中后

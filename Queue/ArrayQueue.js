@@ -1,20 +1,18 @@
-class Queue<T>{
+module.exports = class Queue {
 
-    arr: Array<T>
-    front: number
-    rear: number
+
     constructor() {
         this.arr = []
         this.front = 0;
         this.rear = 0;
     }
 
-    enQueue(v: T) {
+    enQueue(v) {
         this.arr[this.rear] = v;
         this.rear++;
     }
 
-    deQueue(): T {
+    deQueue() {
         if (this.front == this.rear) {
             throw new Error("队列已空！无元素可出队！")
         }
@@ -24,7 +22,7 @@ class Queue<T>{
         return v
     }
 
-    isEmpty(): boolean {
+    isEmpty() {
         return this.rear == this.front
     }
 
@@ -32,5 +30,3 @@ class Queue<T>{
         return this.arr.length
     }
 }
-
-export default Queue;

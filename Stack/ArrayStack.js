@@ -1,8 +1,5 @@
-import TreeNode from "../BinaryTree/TreeNode";
 
-class Stack<T>{
-
-    arr: Array<T>
+module.exports = class Stack{
 
     constructor() {
         this.arr = []
@@ -11,7 +8,7 @@ class Stack<T>{
      * 入栈
      * @param v 入栈元素
      */
-    push(v: T) {
+    push(v) {
         this.arr.push(v)
     }
 
@@ -27,10 +24,7 @@ class Stack<T>{
         return this.arr.length;
     }
 
-    isEmpty(): boolean {
+    isEmpty() {
         return this.arr.length == 0
     }
 }
-
-export default Stack;
-
