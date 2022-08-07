@@ -1,5 +1,9 @@
-
 const Stack = require("../Stack/ArrayStack")
+/**
+ * 快速排序实现O(nlogn)
+ * @param {*} arr 
+ * @returns 
+ */
 function getMaxSortedDistance(arr) {
     //先排序
     let stack = new Stack();
@@ -39,13 +43,40 @@ function partition(arr, startIndex, endIndex) {
     arr[m] = pivot;
     return m;
 }
+
+/**
+ * 计数排序实现O(n)
+ * @param {*} arr 
+ */
+function getMaxSortedDistanceV2(arr) {
+    let min = arr[0], max = arr[0];
+    arr.forEach(element => {
+        if (element > max) max = element;
+        if (element < min) min = element;
+    });
+    let countArr = new Array(max - min + 1).fill(0)
+    for (let i = 0; i < arr.length; i++) {
+        const element = arr[i];
+        countArr[element - min]++;
+    }
+    let maxDistance = 0, curDistance = 0, startCalc = false;
+    for (let i = 0; i < countArr.length; i++) {
+        const element = countArr[i];
+        if (!startCalc && element > 0) startCalc = true
+        if (!startCalc) return;
+        if (element == 0) {
+            curDistance++
+        } else {
+            maxDistance = curDistance > maxDistance ? curDistance : maxDistance;
+            curDistance = 0
+        }
+    }
+    return maxDistance;
+}
 let arr = [2, 6, 3, 4, 5, 10, 9];
 
-let maxDistance = getMaxSortedDistance(arr);
-console.log('arr: ', arr);
-console.log('maxDistance: ', maxDistance);
-
-
-function getMaxSortedDistanceV2(arr){
-
-}
+// let maxDistance = getMaxSortedDistance(arr);
+// console.log('arr: ', arr);
+// console.log('maxDistance: ', maxDistance);
+let maxDistance2 = getMaxSortedDistanceV2(arr);
+console.log('maxDistance2: ', maxDistance2);

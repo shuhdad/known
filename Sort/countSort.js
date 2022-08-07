@@ -31,7 +31,6 @@ function countSort(arr) {
             arr[index] = i;
             index++;
         }
-
     }
 }
 
