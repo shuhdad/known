@@ -28,7 +28,7 @@ function partition(arr, startIndex, endIndex) {
     return m;
 }
 
-let arr = [4, 4, 6, 5, 3, 2, 8, 1];
+let arr = [2, 6, 3, 4, 5, 10, 9];
 quickSort(arr, 0, arr.length - 1);
 
 console.log(arr);

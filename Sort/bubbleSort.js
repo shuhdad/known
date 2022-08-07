@@ -15,7 +15,7 @@ function sort(arr) {
 
 /**
  * 冒泡排序优化
- * 版本点：
+ * 优化点点：
  * 1.添加isSorted标识是否已经排序完成，如是，则无需在进行后面的遍历
  * 2.记录最后交换的位置索引，在索引后面的位置无需再进行遍历
  * @param {*} arr 
@@ -50,9 +50,9 @@ function sort2(arr) {
  * 使用此算法将会很有效率
  */
 function sort3(arr) {
-    let isSorted = true;
     let temp = 0
     for (let i = 0; i < arr.length / 2; i++) {
+        let isSorted = true;
         for (let j = 0; j < arr.length - i - 1; j++) {
             if (arr[j + 1] < arr[j]) {
                 temp = arr[j];
