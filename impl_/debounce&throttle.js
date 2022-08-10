@@ -34,7 +34,7 @@ function throttle(cb, delay) {
         if (waitingArgs == null) {
             shouldWait = false;
         } else {
-            cb(...args)
+            cb(...waitingArgs)
             waitingArgs = null;
             setTimeout(timeoutFunc, delay);
         }
