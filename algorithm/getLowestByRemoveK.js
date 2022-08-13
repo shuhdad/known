@@ -1,3 +1,9 @@
+/**
+ * 给一个整数字符串，在删除连续的k个数字后，如何得到最小？返回最小值
+ * @param {*} num 
+ * @param {*} k 
+ * @returns 
+ */
 function getLowerByRemovek(num, k) {
     if (num.length <= k) {
         return 0;
