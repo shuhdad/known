@@ -22,7 +22,7 @@ function getBestGoldMiningV1(w, n, p, g) {
 function getBestGoldMiningV2(w, p, g) {
     let rst = new Array(g.length + 1).fill(new Array(w + 1).fill(0))
     for (let i = 1; i <= g.length; i++) {
-        for (let j = 1; j <= w; j++) {
+        for (let j = w; j >= 1; j--) {
             if (j < p[i - 1]) {
                 rst[i][j] = rst[i - 1][j];
             } else {
