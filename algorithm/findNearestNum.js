@@ -1,3 +1,7 @@
+/**
+ * 重新组合数字，使得移动后的数字组合最接近原先数字组合
+ * 且比原先数字组合大
+ */
 function findNearestNum(arr) {
     let m = null, n = null;
     //find m
