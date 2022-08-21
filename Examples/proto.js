@@ -29,6 +29,8 @@ SubType.prototype = prototype;
 
 // //如果不用以上中转方式，用这个，实验结果一致
 // //方法二：
+// 结论：该方法直接将Sub与Super的原型对象指向同一个对象，
+// 修改子类会影响到父类
 // SubType.prototype = SuperType.prototype;
 
 let sub1 = new SubType();
