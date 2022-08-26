@@ -7,8 +7,6 @@
  * *********************************************
  */
 
-
-
 /**
  * 调整数组，比原来数组大，且仅仅比原来数组大
  * @param {*} arr 
@@ -47,10 +45,9 @@ function findNearestNum(arr) {
     return rst;
 }
 
-let a1 = findNearestNum([1, 2, 3, 4, 5])
+let a1 = findNear2([1, 2, 3, 4, 5])
 console.log('a1: ', a1);
-let a2 = findNearestNum([1, 2, 4, 3, 5])
+let a2 = findNear2([1, 2, 4, 3, 5])
 console.log('a2: ', a2);
-let a3 = findNearestNum([1, 7, 9, 8, 6])
+let a3 = findNear2([1, 7, 9, 8, 6])
 console.log('a3: ', a3);
-

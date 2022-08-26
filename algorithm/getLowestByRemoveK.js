@@ -1,5 +1,5 @@
 /**
- * 给一个整数字符串，在删除连续的k个数字后，如何得到最小？返回最小值
+ * 给一个整数字符串，在删除k个数字后，如何得到最小？返回最小值
  * @param {*} num 
  * @param {*} k 
  * @returns 
@@ -44,12 +44,32 @@ function getLowerByRemovekV2(num, k) {
 }
 
 
-let k = 3;
-let num1 = getLowerByRemovekV2("12345", k);
+function rk(num, k) {
+    let done = false
+    for (; k > 0; k--) {
+        if (done) break;
+        for (let i = 0; i < num.length; i++) {
+            if (num[i] > num[i + 1]) {
+                //删除这个位置
+                num = num.substring(0, i) + num.substring(i + 1, num.length);
+                break;
+            }
+            if (i == num.length - 2) {
+                num = num.substring(0, num.length - k)
+                break;
+            }
+        }
+    }
+    return num
+
+}
+let k = 4;
+let num = "74598231239"
+let num1 = rk(num, k);
 console.log('num1: ', num1);
 
-let num2 = getLowerByRemovekV2("87291", k);
+let num2 = getLowerByRemovekV2(num, k);
 console.log('num2: ', num2);
 
-let num3 = getLowerByRemovekV2("45673", k);
+let num3 = getLowerByRemovekV2(num, k);
 console.log('num3: ', num3);

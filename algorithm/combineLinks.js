@@ -58,5 +58,5 @@ let node2 = {
     }
 }
 
-let rst = combineLinks([node1, node2])
+let rst = combineTwoLinks(node1, node2)
 console.log('rst: ', JSON.stringify(rst));
