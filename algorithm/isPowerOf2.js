@@ -13,5 +13,5 @@
  * @returns 
  */
 function isPowerOf2(num) {
-    return num & num - 1 == 0
+    return num & (num - 1) == 0
 }

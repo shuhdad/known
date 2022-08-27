@@ -1,12 +1,18 @@
-const Stack = require("../Stack/ArrayStack")
+/**
+ * 输入一个数组，求该数组经过排序后，最大的相邻距离
+ * 1.双边快排
+ * 2.计数排序（根据现有输入数组的范围）
+ */
+/******************************************************************/
+
 /**
  * 快速排序实现O(nlogn)
  * @param {*} arr 
  * @returns 
  */
 function getMaxSortedDistance(arr) {
-    //先排序
-    let stack = new Stack();
+    //先快速排序（溯源方式）
+    let stack = new Array();
     stack.push([0, arr.length - 1])
     while (!stack.isEmpty()) {
         let data = stack.pop();
@@ -45,34 +51,36 @@ function partition(arr, startIndex, endIndex) {
 }
 
 /**
- * 计数排序实现O(n)
+ *  计数排序实现O(n)
  * @param {*} arr 
+ * @returns 
  */
 function getMaxSortedDistanceV2(arr) {
     let min = arr[0], max = arr[0];
-    arr.forEach(element => {
-        if (element > max) max = element;
-        if (element < min) min = element;
-    });
-    let countArr = new Array(max - min + 1).fill(0)
-    for (let i = 0; i < arr.length; i++) {
-        const element = arr[i];
-        countArr[element - min]++;
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < min) {
+            min = arr[i]
+        } else if (arr[i] > max) {
+            max = arr[i]
+        }
     }
-    let maxDistance = 0, curDistance = 0, startCalc = false;
+    //计数排序
+    let countArr = new Array(max - min + 1).fill(0);
+    arr.forEach(v => {
+        countArr[v - min]++;
+    });
+    let maxDistance = curDistance = 1;
     for (let i = 0; i < countArr.length; i++) {
-        const element = countArr[i];
-        if (!startCalc && element > 0) startCalc = true
-        if (!startCalc) return;
-        if (element == 0) {
-            curDistance++
+        if (countArr[i] == 0) {
+            curDistance++;
         } else {
-            maxDistance = curDistance > maxDistance ? curDistance : maxDistance;
-            curDistance = 0
+            maxDistance = Math.max(maxDistance, curDistance);
+            curDistance = 1
         }
     }
     return maxDistance;
 }
+
 let arr = [2, 6, 3, 4, 5, 10, 9];
 
 // let maxDistance = getMaxSortedDistance(arr);

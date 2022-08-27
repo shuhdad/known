@@ -1,3 +1,10 @@
+/**
+ * 输入一个数组arr，与一个正整数K
+ * 在数组arr中寻找连续的子数组，满足子数组的和等于K
+ * @param {*} arr 
+ * @param {*} k 
+ * @returns 
+ */
 function sumArraySumEqualK(arr, k) {
     let count = 0;
     let presum = 0;
@@ -16,6 +23,7 @@ function sumArraySumEqualK(arr, k) {
     }
     return count;
 }
+
 let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 let count = sumArraySumEqualK(arr, 21)
 console.log("count:", count)
