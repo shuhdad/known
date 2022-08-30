@@ -3,6 +3,25 @@
  * u.console('breakfast').setTimeout(3000).console('lunch').setTimeout(3000).console('dinner')
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class U {
     constructor() {
         this.status = 0
@@ -29,5 +48,5 @@ class U {
         return this;
     }
 }
-let u = new U();
+let u = new UU();
 u.console('breakfast').setTimeout(3000).console('lunch').setTimeout(3000).console('dinner')

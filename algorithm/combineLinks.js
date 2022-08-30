@@ -1,40 +1,60 @@
 
-function ListNode(val, next) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
+
+//合并多个有序链表
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function combineLinks(list) {
+    return combineLinkRange(list, 0, list.length - 1)
 }
 
-function combineLinks(linkList) {
-    return combineLinksRange(linkList, 0, linkList.length - 1)
+function combineLinkRange(list, start, end) {
+    if (start > end) return null
+    if (start == end) return list[start];
+    let pivot = (start + end) >> 1;
+    return combineTwoLinks(combineLinkRange(list, start, pivot), combineLinkRange(list, pivot + 1, end))
 }
 
-function combineLinksRange(linkList, l, r) {
-    if (l > r) {
-        return null
+function combineTwoLinks(node1, node2) {
+    let head = {
+        next: null
     }
-    if (l == r) {
-        return linkList[l]
-    }
-    let mid = (l + r) >> 1;
-    return combineTwoLinks(combineLinksRange(linkList, l, mid), combineLinksRange(linkList, mid + 1, r))
-}
+    let t1 = node1, t2 = node2;
+    let cur = head;
 
-function combineTwoLinks(l1, l2) {
-    let head = new ListNode();
-    let tail = head; p1 = l1, p2 = l2
-    while (p1 != null && p2 != null) {
-        if (p1.value <= p2.value) {
-            tail.next = new ListNode(p1.value, null)
-            p1 = p1.next;
+    while (t1 && t2) {
+        if (t1.value <= t2.value) {
+            cur.next = t1;
+            t1 = t1.next;
         } else {
-            tail.next = new ListNode(p2.value, null)
-            p2 = p2.next;
+            cur.next = t2;
+            t2 = t2.next
         }
-        tail = tail.next
+        cur = cur.next;
     }
-    tail.next = p1 == null ? p2 : p1
+
+    cur.next = t1 == null ? t2 : t1;
     return head.next;
 }
+
+
+
 
 let node1 = {
     value: 1,
@@ -52,11 +72,24 @@ let node2 = {
     next: {
         value: 3,
         next: {
-            value: 4,
+            value: 7,
             next: null
         }
     }
 }
 
-let rst = combineTwoLinks(node1, node2)
+
+let node3 = {
+    value: 2,
+    next: {
+        value: 5,
+        next: {
+            value: 6,
+            next: null
+        }
+    }
+}
+
+let rst = combineLinks([node1, node2, node3])
 console.log('rst: ', JSON.stringify(rst));
+

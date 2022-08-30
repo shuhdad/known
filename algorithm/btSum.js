@@ -61,7 +61,7 @@ function checkNodeHasPathSumV2(root, targetSum) {
         return root.val == targetSum;
     }
     return checkNodeHasPathSumV2(root.left, targetSum - root.val) ||
-    checkNodeHasPathSumV2(root.right, targetSum - root.val)
+        checkNodeHasPathSumV2(root.right, targetSum - root.val)
 }
 
 let root = {
@@ -91,5 +91,3 @@ let root = {
         }
     }
 }
-let v = checkNodeHasPathSumV2(root, 22)
-console.log('v: ', v);
