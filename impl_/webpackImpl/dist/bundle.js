@@ -1,0 +1,1 @@
+(()=>{try{let r=1;r+=2,console.log("report")}catch(r){report(error)}})();

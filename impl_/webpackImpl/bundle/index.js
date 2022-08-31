@@ -64,5 +64,5 @@ function generateCode(entry) {
     `
 }
 
-const code = generateCode("./src/index.js") 
+const code = generateCode("../src/index.js") 
 console.log('code: ', code);
