@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _message_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./message.js */ \"./src/message.js\");\n\nconsole.log(_message_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])\n\n\n//# sourceURL=webpack://loader/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _message_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./message.js */ \"./src/message.js\");\n\n\nfunction haha() {\n  try {\n    let a = 1 + 1;\n  } catch (error) {\n    window.report(error);\n  }\n}\n\n//# sourceURL=webpack://loader/./src/index.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _mes
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _word_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./word.js */ \"./src/word.js\");\n\nconst message = `say ${_word_js__WEBPACK_IMPORTED_MODULE_0__.word}`\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (message);\n\n//# sourceURL=webpack://loader/./src/message.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _word_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./word.js */ \"./src/word.js\");\n\nconst message = `say ${_word_js__WEBPACK_IMPORTED_MODULE_0__.word}`;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (message);\n\n//# sourceURL=webpack://loader/./src/message.js?");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"word\": () => (/* binding */ word)\n/* harmony export */ });\nconst word = 'hello';\n\n\n//# sourceURL=webpack://loader/./src/word.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"word\": () => (/* binding */ word)\n/* harmony export */ });\nconst word = 'hello';\n\n//# sourceURL=webpack://loader/./src/word.js?");
 
 /***/ })
 

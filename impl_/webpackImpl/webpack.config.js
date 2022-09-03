@@ -9,10 +9,12 @@ module.exports = {
             {
                 test: /\.js$/,
                 use: {
-                    loader: './loaders/replaceLoader',
+                    loader: './loaders/errorReportLoader',
                     options: {
-                        word: "will"
-                    }
+                        word: "will",
+                        identifier: "error",
+                        catchClause: `window.report(error)`
+                    },
                 }
             }
         ]

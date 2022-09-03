@@ -50,6 +50,6 @@ function thirdMaxNumV2(arr) {
     }
     return t == null ? f : t
 }
-let arr = [1, 2, -2147483648]
-let rst = thirdMaxNumV1(arr);
+let arr = [1, 90, 8, 30, 7, 99]
+let rst = thirdMaxNumV2(arr);
 console.log('rst: ', rst);

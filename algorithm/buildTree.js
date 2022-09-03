@@ -9,20 +9,6 @@ const TreeNode = require("../BinaryTree/TreeNode");
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 let inorderMap = new Map()
 function buildSubTree(preOrder, inOrder, pre_left, pre_right, in_left, in_right) {
     if (pre_left > pre_right) {
@@ -57,7 +43,7 @@ function buildTree(preOrder, inOrder) {
 
 
 let preOrder = [3, 9, 20, 15, 7], inOrder = [9, 3, 15, 20, 7];
-let sourceTree = buildTree(preOrder, inOrder)
+let sourceTree = buildTreeV3(preOrder, inOrder)
 console.log('sourceTree: ', JSON.stringify(sourceTree));
 
 

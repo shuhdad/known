@@ -1,2 +1,5 @@
 import message from './message.js'
-console.log(message)
+function haha(){
+    let a =1+1;
+    
+}
