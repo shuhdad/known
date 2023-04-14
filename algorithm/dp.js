@@ -50,7 +50,7 @@ function getBestGoldMiningV3(w, p, g) {
 let w = 10
 let p = [5, 5, 3, 4, 3]
 let g = [400, 500, 200, 300, 350];
-let best1 = getBestGoldMiningV1(w, 5,p, g);
+let best1 = getBestGoldMiningV1(w, 5, p, g);
 console.log('best1: ', best1);
 let best2 = getBestGoldMiningV2(w, p, g);
 console.log('best: ', best2);

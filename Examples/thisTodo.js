@@ -1,25 +1,5 @@
-
-// global.name = "haha"
-// function test(){
-//     console.log(this.name,"this.name in test")
-// }
-// test();
-// setTimeout(()=>{
-//     console.log(this.name,"this.name in timer")
-//     test()
-// },1000)
-
-global.count = "1"
-console.log(module.exports == this);
-
-console.log("this-outside",this.name)
-
-function test(){
-    console.log("this1-internal",this.name)
-}
-test();
-
-
-module.exports = {
-    name :"wang"
-}
+const projectToken = 'xxx'
+const repo = "git@git.dev.sh.ctripcorp.com:train-pal/MainProject.git"
+let  url = repo.replace(':', '/').replace('git@', `http://read_repository:${projectToken}@`)
+;
+console.log('url: ', url);
